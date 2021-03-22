@@ -10,7 +10,7 @@ _underlined text_
 
 [to hyperlink](thisiswheretheurlgoes.com)
 
-[Pike Spector](pike.spector@noaa.gov)
+[Pike's email address](pike.spector@noaa.gov)
 
 Link to our [github repo](https://github.com/mspector13/CalCOFI-Hackathon2021)
 
