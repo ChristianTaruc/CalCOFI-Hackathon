@@ -1,0 +1,15 @@
+---
+title: "Project Work Flow"
+output: pdf_document
+---
+
+##datasets
+whales (grey/humpback?)
+euphausiids
+phytoplankton (primary productivity)
+SST (and temp profiles)/sunlight?
+salinity
+nutrient profiles
+
+subset by lat/long or by station name
+establish temporal scale (season, el nino/la nina, pdo--include as notes on the graph)
