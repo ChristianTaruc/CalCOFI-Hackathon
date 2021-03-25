@@ -10,15 +10,23 @@
 library(shiny)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
-
-    # Application title
+ui = fluidPage(
     titlePanel("Whalestogram"),
-
-
-        # Show a plot of the generated distribution
+    sidebarLayout(
+        sidebarPanel(
+            selectsizeInput("cnt",
+                            "Select Species:",
+                            choices = c("Humpback Whale",
+                                        "Gray Whale",
+                                        "Blue Whale",
+                                        "Sei Whale",
+                                        "Minke Whale",
+                                        "Fin Whale"),
+                            selected = "Gray Whale",
+                            multiple = TRUE
+        ),
         mainPanel(
-            plotOutput("Plot")
+            plotOutput("plot")
         )
     )
 )

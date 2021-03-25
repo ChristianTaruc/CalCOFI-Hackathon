@@ -13,16 +13,13 @@ whale <- read_csv("whales_3.csv")
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
-    output$Plot <- renderPlot({
-
-        # generate bins based on input$bins from ui.R
-        x    <- whale[, 5]
-        y <- whale[, 7] 
-
-        # draw the histogram with the specified number of bins
-        plot(x, y)
-
+    output$Plot = renderPlot({
+        ggplot(whale) +
+            geom_line(mapping = aes(x = years, y = whale[, 7])) +
+            labs (x = "Time", y = "Whale Species", title = "Whale") +
+            scale_color_discrete(name = "Species")
     })
 
 })
+shinyApp(ui = ui, server)
 
