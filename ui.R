@@ -1,26 +1,32 @@
-shinyUI(
-  fluidPage(
-    titlePanel("ChannelIslandsNationalMarineSanctuary"),
-    mainPanel(leafletOutput("map"))
-  )
-)
-shinyApp(ui = ui, server = server)
+#
+# This is the user-interface definition of a Shiny web application. You can
+# run the application by clicking 'Run App' above.
+#
+# Find out more about building applications with Shiny here:
+#
+#    http://shiny.rstudio.com/
+#
 
+library(shiny)
+
+# Define UI for application that draws a histogram
 ui <- fluidPage(
-  titlePanel("Channel Islands National Marine Sanctuary"),
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("year",
-                  "Year",
-                  min = 1996
-                  max = 2006
-                  step = 1
-                  sep = ""
-                  value = 1996),
-  mainPanel(
-    leafletOutput("map"),
-    dataTableOutput("table")
-       )
+    titlePanel("Whalestogram"),
+    sidebarLayout(
+        sidebarPanel(
+            selectsizeInput("cnt",
+                            "Select Species:",
+                            choices = c("Humpback Whale",
+                                        "Gray Whale",
+                                        "Blue Whale",
+                                        "Sei Whale",
+                                        "Minke Whale",
+                                        "Fin Whale"),
+                            selected = "Gray Whale",
+                            multiple = TRUE
+        ),
+        mainPanel(
+            plotOutput("plot")
+        )
     )
-  )
-  shinyApp(ui = ui, server = server)
+)
