@@ -1,6 +1,6 @@
 shinyUI(
   fluidPage(
-    titlePanel("Channel Islands National Marine Sanctuary"),
+    titlePanel("ChannelIslandsNationalMarineSanctuary"),
     mainPanel(leafletOutput("map"))
   )
 )
