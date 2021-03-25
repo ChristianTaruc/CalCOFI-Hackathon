@@ -13,14 +13,14 @@ whale <- read_csv("whales_3.csv")
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
-    output$distPlot <- renderPlot({
+    output$Plot <- renderPlot({
 
         # generate bins based on input$bins from ui.R
         x    <- whale[, 5]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
+        y <- whale[, 7] 
 
         # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+        plot(x, y)
 
     })
 
