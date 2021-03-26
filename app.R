@@ -10,11 +10,11 @@
 library(shiny)
 library(dplyr)
 library(leaflet)
-library(shinycssloaders)
-library(shinythemes)
+#extras has heatmap
+library(leaflet.extras)
 
 #Import Data
-krill<-read.csv("krill_data3.csv")
+krill<-read.csv("krill_data4.csv")
 whales<-read.csv("whales_3.csv")
 cst_btl<-read.csv("cst_btl_FinalDataset.csv")
 
@@ -114,8 +114,18 @@ server <- function(input, output) {
             userData<- krill
         } else {
             userData<-cst_btl
+            if (input$dataSelector == "ChlorA") {
+                #do something
+            }
+            else if (input$dataSelector == "Tdeg_C") {
+                #do something
+            }
+            else if (input$dataSelector == "PO4uM") {
+                #do something
+            }
         }
-        userData[userData$Date >= minDate & userData$YearMonth <= maxDate,]
+        userData$YearMonth <-format(userData$Date, format="%Y-%m-01")
+        userData[userData$YearMonth >= minDate & userData$YearMonth <= maxDate, ]
     })
     #Create map
     output$mymap <- renderLeaflet({
@@ -125,7 +135,15 @@ server <- function(input, output) {
             ) %>%
             addMarkers(label = getWhales()$group_size,
                        lat = getWhales()$latitude,
-                       lng = getWhales()$longitude)
+                       lng = getWhales()$longitude
+            ) %>%
+            addCircleMarkers(
+                lat = getUData()$Latitude,
+                lng = getUData()$Longitude,
+                radius = 3 * getUData()$abundance_log,
+                stroke = FALSE,
+                fillColor = 'Orange'
+            )
     })
 }
 
